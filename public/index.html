@@ -1,51 +1,26 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
-<title>NURO BROWSER</title>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<title>NeuroSky Blink</title>
 <link rel="stylesheet" href="css/custom.css">
+<script type="text/javascript" src="libs/jquery.min.js"></script>
+<script type="text/javascript" src="libs/socket.io.js"></script>
+<script type="text/javascript" src="libs/d3.min.js"></script>
+<!--  <script type="text/javascript" src="libs/Chart.min.js"></script> -->
+<script type="text/javascript" src="libs/p5.min.js"></script>
 
 <body>
-    <section class="mainContainer" id="main">
-        <div class="left-col col-md-2">
-            <div class="row myrow">
-                <div class="sideBar-tile">
-                    <p id="blink">B</p>
-                    <br><span>BLINK</span>
-                </div>
-            </div>
-            <div class="row myrow">
-                <div class="sideBar-tile">
-                    <p id="focus">F</p>
-                    <br><span>FOCUS</span>
-                </div>
-            </div>
-            <div class="row myrow">
-                <div class="sideBar-tile">
-                    <p id="mediation">M</p>
-                    <br><span>MEDITATION</span>
-                </div>
-            </div>
-        </div>
-        <div class="right-col col-md-10">
-            <div class="row myrow2">
-                <div id="blinkProgress" class="progressBar-tile">
-                </div>
-            </div>
-            <div class="row myrow2">
-                <div id="focusProgress" class="progressBar-tile">
-                </div>
-            </div>
-            <div class="row myrow2">
-                <div id="mediProgress" class="progressBar-tile">
-                </div>
-            </div>
-        </div>
-    </section>
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-    <script src="libraries/p5.js" type="text/javascript"></script>
-    <script src="libraries/p5.dom.js" type="text/javascript"></script>
-    <script src="node/app.js" type="text/javascript"></script>
-    <script src="js/custom.js" type="text/javascript"></script>
-    <script src="js/connect.js" type="text/javascript"></script>
+    <!-- <div class="flat-graph"><span>ALPHA</span><i></i><i></i></div>
+    <div class="flat-graph"><span>BETA</span></div>
+    <div class="flat-graph"><span>GAMMA</span></div>
+    <div class="flat-graph"><span>THETA//DELTA</span></div> -->
+    <!-- <div id="charts"></div>
+    <div id="values"></div> -->
+    <div class="graph"><span>ALPHA</span></div>
+    <div class="graph"><span>BETA</span></div>
+    <div class="graph"><span>GAMMA</span></div>
+    <div class="graph"><span>DELTA//THETA</span></div>
+    <script type="text/javascript" src="js/neuro-connect.js"></script>
+    <!--     <script type="text/javascript" src="js/brainD3.js"></script> -->
+    <script type="text/javascript" src="js/brainD3v2.js"></script>
+    <!--  <script type="text/javascript" src="js/custom.js"></script> -->
 </body>
