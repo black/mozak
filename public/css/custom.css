@@ -10,15 +10,16 @@ html {
 * {
     box-sizing: border-box;
 }
- 
+
 
 .graph {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
-.graph > span{
+.graph>span {
     grid-column: 1/2;
     grid-row: 1/2;
     font-size: 10px;
@@ -26,16 +27,17 @@ html {
     padding: 10px;
 }
 
-.graph > svg{
+.graph>svg {
     grid-column: 1/2;
     grid-row: 1/2;
 }
- 
+
 .graph .group {
     fill: none;
     stroke: black;
     stroke-width: 1.5;
 }
+
 
 
 

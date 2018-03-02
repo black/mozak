@@ -1,11 +1,35 @@
-let limit = 60 * 1,
+let limit = 20 * 1,
     duration = 1000,
-    now = new Date(Date.now() - duration);
+    now = new Date(Date.now() - duration),
+    maxValue = [100, 100, 50000, 50000, 50000, 50000];
 
 let width = 400,
     height = 100;
 
 let groups = [{
+        attention: {
+            value: 0,
+            color: 'rgba(255, 255, 255, 0.5)',
+            data: d3.range(limit).map(function() {
+                return 0
+            })
+        },
+        meditation: {
+            value: 0,
+            color: 'rgba(255, 255, 255, 1)',
+            data: d3.range(limit).map(function() {
+                return 0
+            })
+        }
+    }, {
+        blink: {
+            value: 0,
+            color: 'rgba(255, 255, 255, 1)',
+            data: d3.range(limit).map(function() {
+                return 0
+            })
+        }
+    }, {
         alphaLow: {
             value: 0,
             color: 'rgba(255, 255, 255, 0.5)',
@@ -72,10 +96,10 @@ let groups = [{
 ];
 
 
-$('.graph').each((i, el) => {
+$('.graph').each((i, el) => { 
 
     let x = d3.scaleLinear().domain([now - (limit - 2), now - duration]).range([0, width]); // scaling function for horozontal axis
-    let y = d3.scaleLinear().domain([0, 1000000]).range([height, 0]); // scaling frunction for verticle axis
+    let y = d3.scaleLinear().domain([0, maxValue[i]]).range([height, 0]); // scaling frunction for verticle axis
 
 
     let line = d3.line()
@@ -85,7 +109,7 @@ $('.graph').each((i, el) => {
         })
         .y(function(d) {
             return y(d)
-        })
+        });
 
     let svg = d3.select(el).append('svg')
         .attr('class', 'chart')
@@ -109,6 +133,7 @@ $('.graph').each((i, el) => {
             let group = groups[i][name];
             group.data.push((brainSignal[name] == undefined) ? 0 : brainSignal[name]);
             group.path.attr('d', line);
+            if (maxValue[i] < brainSignal[name]) maxValue[i] = brainSignal[name];
         }
 
         // Shift domain
