@@ -1,5 +1,5 @@
 let socket,
-    attention = meditation = blink = alphaLow = alphaHigh = betaLow = betaHigh = gammaLow = gammaHigh = delta = theta = 0,
+    attention = meditation = blink = alphaLow = alphaHigh = betaLow = betaHigh = gammaLow = gammaHigh = delta = theta = rawEEG = 0,
     brainSignal = {};
 
 socket = io.connect('http://localhost:3000');

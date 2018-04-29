@@ -1,9 +1,9 @@
 let limit = 20 * 1,
     duration = 1000,
     now = new Date(Date.now() - duration),
-    maxValue = [100, 100, 50000, 50000, 50000, 50000];
+    maxValue = [100, 100, 0, 0, 0, 0, 0];
 
-let width = 400,
+let width = $('#lineGraph').width(),
     height = 100;
 
 let groups = [{
@@ -92,11 +92,19 @@ let groups = [{
                 return 0
             })
         }
+    }, {
+        rawEEG: {
+            value: 0,
+            color: 'rgba(255, 255, 255, 1)',
+            data: d3.range(limit).map(function() {
+                return 0
+            })
+        }
     }
 ];
 
 
-$('.graph').each((i, el) => { 
+$('.graph').each((i, el) => {
 
     let x = d3.scaleLinear().domain([now - (limit - 2), now - duration]).range([0, width]); // scaling function for horozontal axis
     let y = d3.scaleLinear().domain([0, maxValue[i]]).range([height, 0]); // scaling frunction for verticle axis
@@ -129,11 +137,16 @@ $('.graph').each((i, el) => {
     function tick() {
         now = new Date()
 
+        $('.graph:nth-child(' + (i + 1) + ')>i').text(maxValue[i]+" < MAX");
+
         for (let name in groups[i]) {
             let group = groups[i][name];
             group.data.push((brainSignal[name] == undefined) ? 0 : brainSignal[name]);
             group.path.attr('d', line);
-            if (maxValue[i] < brainSignal[name]) maxValue[i] = brainSignal[name];
+            if (maxValue[i] < brainSignal[name]) {
+                maxValue[i] = brainSignal[name];
+                y.domain([0, maxValue[i]]);
+            }
         }
 
         // Shift domain

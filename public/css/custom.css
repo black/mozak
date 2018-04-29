@@ -1,5 +1,5 @@
-body,
-html {
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -7,10 +7,27 @@ html {
     color: white;
 }
 
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0.5rem;
+}
+
 * {
     box-sizing: border-box;
 }
 
+#lineGraph {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    height: 600px;
+}
+
+#radarChart {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
 
 .graph {
     display: grid;
@@ -27,6 +44,16 @@ html {
     padding: 10px;
 }
 
+.graph>i {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    justify-self: right;
+    font-size: 10px;
+    opacity: 0.9;
+    padding: 10px;
+    font-style: normal;
+}
+
 .graph>svg {
     grid-column: 1/2;
     grid-row: 1/2;
@@ -37,6 +64,11 @@ html {
     stroke: black;
     stroke-width: 1.5;
 }
+
+
+
+
+
 
 
 
